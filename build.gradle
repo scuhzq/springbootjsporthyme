@@ -1,0 +1,56 @@
+buildscript {
+	ext {
+		springBootVersion = '1.5.3.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'spring-boot'
+apply plugin: 'war'
+
+war {
+	baseName = 'ROOT'
+}
+
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+	jcenter()
+	maven { url "https://repo.spring.io/snapshot" }
+	maven { url "https://repo.spring.io/milestone" }
+}
+
+
+dependencies {
+	compile("javax.servlet:javax.servlet-api:3.1.0")
+	compile ('javax.servlet:jstl:1.2')
+
+	compile('mysql:mysql-connector-java')
+
+	compile('org.springframework.boot:spring-boot-starter-data-jpa')
+	compile('org.springframework.boot:spring-boot-starter-web')
+	compile('org.springframework.boot:spring-boot-devtools')
+
+//	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
+	compile('org.apache.tomcat.embed:tomcat-embed-jasper')
+
+	compile('tomcat:jasper-runtime:5.5.23')
+	compile('tomcat:jasper-compiler:5.5.23')
+	compile('org.apache.tomcat.embed:tomcat-embed-core')
+
+
+	providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+}
+
+bootRun {
+	addResources = true
+}
