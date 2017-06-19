@@ -12,6 +12,7 @@
 	<h1> jsp首页1jgjggjgg</h1>
 	<h1>测试热部署</h1>
 	<div>${index}</div>
+	<div><sp:message code="welcome"></sp:message></div>
 	<script type="text/javascript" src="${ctx}/js/index.js"></script>
 </body>
 </html>
